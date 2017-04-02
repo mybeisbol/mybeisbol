@@ -8,7 +8,7 @@
                 <ul class="nav child_menu">
                     <li><a href="form.html">Todas las Entradas</a></li>
                     <li><a href="form_advanced.html">Añadir Nueva</a></li>
-                    <li><a href="form_validation.html">Categorias</a></li>
+                    <li><a href="{{ url('/addcategorie') }}">Categorias</a></li>
 
                 </ul>
             </li>
