@@ -5,6 +5,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Debug\Dumper;
 use Illuminate\Contracts\Support\Htmlable;
+use App\Privilege;
 
 if (! function_exists('append_config')) {
     /**
@@ -948,5 +949,21 @@ if (! function_exists('with')) {
     function with($object)
     {
         return $object;
+    }
+}
+
+if (! function_exists('hasPrivilege')) {
+    /**
+     * Determine whether a specific privilege is in the list of privileges
+     *
+     * @return int $privilege
+     */
+    function hasPrivilege($privilege)
+    {
+        foreach (Privilege::$list as $p){
+            if($p->id_privilege == $privilege)
+                return true;
+        }
+        return false;
     }
 }

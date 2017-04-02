@@ -7,9 +7,10 @@
  */
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+use App\Privilege;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 use App\User;
 
@@ -27,6 +28,9 @@ class DashboardController extends Controller
      */
 
     function index(){
-        return view('admin/index');
+
+        $data = array();
+        $data['privileges'] = Privilege::getPrivileges(Auth::user()->id);
+        return view('admin/index', $data);
     }
 }
