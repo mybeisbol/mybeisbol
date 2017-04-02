@@ -8,7 +8,7 @@
 
 <!-- define full-name -->
 @section('full-name')
-    {{ $name }}
+    {{ Auth::user()->first_name." ".Auth::user()->last_name }}
 @endsection
 
 @section('page-content')

@@ -8,11 +8,14 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 use App\User;
 
 class DashboardController extends Controller
 {
+    use AuthenticatesUsers;
 
     /**
      * this function will show the dashboard to an specific user
@@ -23,9 +26,7 @@ class DashboardController extends Controller
      * @author: rafael.rofes@mybeisbol.com
      */
 
-    function index($id=null){
-        $usr = User::find($id);
-        $data["name"] = $usr->first_name." ".$usr->last_name;
-        return view('admin/index',$data);
+    function index(){
+        return view('admin/index');
     }
 }
