@@ -23,4 +23,3 @@ Route::get('/dashboard/{id?}', 'DashboardController@index');
 
 ///Route for Categories
 Route::resource('/categories', 'CategoryController');
-Route::get('/addcategorie', 'CategoryController@index');

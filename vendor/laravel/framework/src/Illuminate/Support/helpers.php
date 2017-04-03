@@ -955,8 +955,9 @@ if (! function_exists('with')) {
 if (! function_exists('hasPrivilege')) {
     /**
      * Determine whether a specific privilege is in the list of privileges
+     * @param int $privilege
      *
-     * @return int $privilege
+     * @return bool
      */
     function hasPrivilege($privilege)
     {

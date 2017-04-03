@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Privilege;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -18,6 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = category::all();
+        Privilege::getPrivileges();
         return view('admin/category/show_category')->with(['categories' => $categories]);
     }
 
@@ -28,7 +30,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = category::all();
+        Privilege::getPrivileges();
+        return view('admin/category/add_category')->with(['categories' => $categories]);
     }
 
     /**
@@ -60,7 +64,8 @@ class CategoryController extends Controller
 
         if($categoria->save()){
             $categories = category::all();
-            return view('admin/category/show_category')->with(['categories' => $categories]);
+            Privilege::getPrivileges();
+            return view('admin/category/show_category')->with(['saved'=>true, 'categories' => $categories]);
         }
 
     }
@@ -87,7 +92,8 @@ class CategoryController extends Controller
 
         $categories = category::find($id);
        // dd($categories->name);
-        return view('admin/category/show_category')->with(['edit' => true, 'categories' => $categories]);
+        Privilege::getPrivileges();
+        return view('admin/category/edit_category')->with(['edit' => true, 'categories' => $categories]);
     }
 
     /**
@@ -118,7 +124,8 @@ class CategoryController extends Controller
 
         if($categoria->save()){
             $categories = category::all();
-            return view('admin/category/show_category')->with(['categories' => $categories]);
+            Privilege::getPrivileges();
+            return redirect()->action('CategoryController@index');
         }
 
     }
@@ -137,7 +144,9 @@ class CategoryController extends Controller
         else
             $categories->is_active = true;
 
-        if($categories->save())
-             return view('admin/category/show_category')->with(['categories' => $categories]);
+        if($categories->save()) {
+            Privilege::getPrivileges();
+            return redirect()->action('CategoryController@index');
+        }
     }
 }

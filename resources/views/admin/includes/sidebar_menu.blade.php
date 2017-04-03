@@ -13,7 +13,7 @@
                         <li><a href="form_advanced.html">Añadir Nueva</a></li>
                     @endif
                     @if (hasPrivilege(ADMIN_PRIVILEGE_MANAGE_CATEGORIES))
-                        <li><a href="form_validation.html">Categorias</a></li>
+                        <li><a href="{{ url('/categories') }}">Categorias</a></li>
                     @endif
 
                 </ul>
