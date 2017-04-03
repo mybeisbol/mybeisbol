@@ -4,46 +4,71 @@
         <ul class="nav side-menu">
             <li class="active"><a><i class="fa fa-bar-chart-o"></i> Dashboard </a>
             </li>
+            @if (hasPrivilege(ADMIN_PRIVILEGE_VIEW_ENTRADAS))
             <li><a><i class="fa fa-edit"></i> Entradas <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="form.html">Todas las Entradas</a></li>
-                    <li><a href="form_advanced.html">Añadir Nueva</a></li>
-                    <li><a href="form_validation.html">Categorias</a></li>
+
+                    @if (hasPrivilege(ADMIN_PRIVILEGE_ADD_ENTRADAS))
+                        <li><a href="form_advanced.html">Añadir Nueva</a></li>
+                    @endif
+                    @if (hasPrivilege(ADMIN_PRIVILEGE_MANAGE_CATEGORIES))
+                        <li><a href="{{ url('/categories') }}">Categorias</a></li>
+                    @endif
 
                 </ul>
             </li>
+            @endif
+            @if (hasPrivilege(ADMIN_PRIVILEGE_MANAGE_PAGES))
             <li><a><i class="fa fa-file-o"></i> Paginas <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="general_elements.html">Todas las Paginas</a></li>
                     <li><a href="media_gallery.html">Añadir Nueva</a></li>
                 </ul>
             </li>
+            @endif
+            @if (hasPrivilege(ADMIN_PRIVILEGE_VIEW_POLLS))
             <li><a><i class="fa fa-line-chart"></i> Encuestas <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="tables.html">Todos las Encuestas</a></li>
-                    <li><a href="tables_dynamic.html">Añadir Nueva</a></li>
+                    @if (hasPrivilege(ADMIN_PRIVILEGE_ADD_POLL))
+                        <li><a href="tables_dynamic.html">Añadir Nueva</a></li>
+                    @endif
                 </ul>
             </li>
+            @endif
+            @if (hasPrivilege(ADMIN_PRIVILEGE_MANAGE_ADMIN))
             <li><a><i class="fa fa-user "></i>Administradores<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="chartjs.html">Todos los Administradores</a></li>
+                    <li><a href="{{ url('/admins') }}">Todos los Administradores</a></li>
                     <li><a href="chartjs2.html">Adicionar Administrador</a></li>
                 </ul>
             </li>
+            @endif
+            @if (hasPrivilege(ADMIN_PRIVILEGE_MANAGE_USER))
             <li><a><i class="fa fa-user-plus"></i>Usuarios <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="fixed_sidebar.html">Todos los Usuarios</a></li>
                     <li><a href="fixed_footer.html">Adicionar Usuario</a></li>
                 </ul>
             </li>
+            @endif
+            @if (hasPrivilege(ADMIN_PRIVILEGE_SETTING_GENERAL))
             <li><a><i class="fa fa-cogs"></i>Ajustes <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="fixed_sidebar.html">General</a></li>
-                    <li><a href="fixed_footer.html">Escritura</a></li>
-                    <li><a href="fixed_footer.html">Lectura</a></li>
-                    <li><a href="fixed_footer.html">Comentarios</a></li>
+                    @if (hasPrivilege(ADMIN_PRIVILEGE_SETTING_WRITE))
+                        <li><a href="fixed_footer.html">Escritura</a></li>
+                    @endif
+                    @if (hasPrivilege(ADMIN_PRIVILEGE_SETTING_READ))
+                        <li><a href="fixed_footer.html">Lectura</a></li>
+                    @endif
+                    @if (hasPrivilege(ADMIN_PRIVILEGE_SETTING_COMMENTS))
+                        <li><a href="fixed_footer.html">Comentarios</a></li>
+                    @endif
                 </ul>
             </li>
+            @endif
         </ul>
     </div>
     <div class="menu_section">

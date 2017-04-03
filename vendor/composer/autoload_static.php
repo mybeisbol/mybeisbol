@@ -272,10 +272,15 @@ class ComposerStaticInitfa12b71173f4d0ad4ac739faeb16803a
     );
 
     public static $classMap = array (
-        'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_23_182642_create_categories_table.php',
-        'CreateCategoryTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_23_182428_create_category_types_table.php',
-        'CreateNewsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_23_182739_create_news_table.php',
+        'CreateArticleCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_02_044130_create_article__categories_table.php',
+        'CreateArticlesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_02_044032_create_articles_table.php',
+        'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_02_044009_create_categories_table.php',
+        'CreateMenusTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_01_032220_create_menus_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreatePrivilegesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_26_183256_create_privileges_table.php',
+        'CreateRolePrivilegesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_26_184242_create_role__privileges_table.php',
+        'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_26_180121_create_roles_table.php',
+        'CreateUserRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_26_191040_create_user__roles_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
