@@ -60,7 +60,7 @@ class CategoryController extends Controller
         $categoria->update_by = Auth::user()->firt_name." ".Auth::user()->last_name;
         $categoria->is_active = true;
         $categoria->order = $request->order;
-        $categoria->cat_type = 1;
+        $categoria->cat_type = $request->type;
 
         if($categoria->save()){
             $categories = category::all();
@@ -120,7 +120,7 @@ class CategoryController extends Controller
         $categoria->update_by = Auth::user()->firt_name." ".Auth::user()->last_name;
         $categoria->is_active = true;
         $categoria->order = $request->order;
-        $categoria->cat_type = 1;
+        $categoria->cat_type = $request->type;
 
         if($categoria->save()){
             $categories = category::all();

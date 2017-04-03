@@ -17,13 +17,14 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Lista de Categorias</h2>
+                        <div class="x_title" style="background-color: #1ABB9C">
+                            <h2>Lista de Categorias
+                                </br><small>Muestra las categorias existentes</small></h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
                                 <li>
-                                    <a href="categories/create">Adicionar</a>
+                                    <a href="categories/create" class="btn-success">Adicionar</a>
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
@@ -50,7 +51,13 @@
                                         </td>
                                         <td>{{ $n->parent }}</td>
                                         <td>{{ $n->order }}</td>
-                                        <td>{{ $n->cat_type }}</td>
+                                        <td>
+                                         @if($n->cat_type=="Menu Rojo")
+                                                <label class="btn-warning btn-xs">{{ $n->cat_type }}</label>
+                                             @else
+                                                <label class="btn-default btn-xs">{{ $n->cat_type }}</label>
+                                             @endif
+                                        </td>
                                         <td>{{ $n->is_active }}</td>
                                         <td>
                                             <div class="btn-group">
