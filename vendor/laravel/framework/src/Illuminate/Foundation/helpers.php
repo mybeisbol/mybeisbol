@@ -914,3 +914,15 @@ if (! function_exists('view')) {
         return $factory->make($view, $data, $mergeData);
     }
 }
+
+if (! function_exists('formatDate')) {
+    /**
+     * @param  string  $dateFormat
+     * @param  array   $date
+     * @return date already formatted
+     */
+    function formatDate($date, $dateFormat="m.d.Y H:i:s")
+    {
+        return date($dateFormat,strtotime($date));
+    }
+}

@@ -39,7 +39,7 @@ if (! function_exists('array_add')) {
      * @param  mixed   $value
      * @return array
      */
-    function array_add($array, $key, $value)
+    function    array_add($array, $key, $value)
     {
         return Arr::add($array, $key, $value);
     }

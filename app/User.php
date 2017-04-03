@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class User extends Authenticatable
 {
@@ -26,4 +28,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    static function GetUserWithRoles(){
+        $users =  DB::table('users')
+                    ->leftJoin('user_roles','user_roles.id_user','=','users.id')
+                    ->leftJoin('roles','roles.id','=','user_roles.id_role')
+                    ->select('users.id','users.first_name','users.last_name','users.email',
+                        'users.created_at','users.updated_at','users.updated_by','users.is_active',
+                        'roles.name as rol','roles.id as id_rol')
+                    ->get();
+
+        $usersWithRoles = array();
+        foreach ($users as $user){
+            if(!isset($usersWithRoles[$user->id])){
+                $usersWithRoles[$user->id] = $user;
+            }
+            $usersWithRoles[$user->id]->roles[$user->id_rol] = $user->rol;
+            unset($user->rol);
+
+        }
+       return $usersWithRoles;
+    }
 }

@@ -10,7 +10,7 @@ namespace App\Http\Controllers;
 use App\Privilege;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-use DB;
+
 
 use App\User;
 
