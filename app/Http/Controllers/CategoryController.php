@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Privilege;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -18,6 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = category::all();
+        Privilege::$list;
         return view('admin/category/show_category')->with(['categories' => $categories]);
     }
 
