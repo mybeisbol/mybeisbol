@@ -40,7 +40,7 @@
             @if (hasPrivilege(ADMIN_PRIVILEGE_MANAGE_ADMIN))
             <li><a><i class="fa fa-user "></i>Administradores<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="chartjs.html">Todos los Administradores</a></li>
+                    <li><a href="{{ url('/admins') }}">Todos los Administradores</a></li>
                     <li><a href="chartjs2.html">Adicionar Administrador</a></li>
                 </ul>
             </li>

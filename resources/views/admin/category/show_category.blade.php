@@ -44,26 +44,33 @@
                                 <tbody>
                                 @foreach($categories as $n)
                                     <tr>
-                                        <td title="{{ $n->description }}">{{ $n->name }}</td>
+                                        <td title="{{ $n->description }}">{{ $n->name }}
+                                            <br />
+                                            <small class="light-gray">{{ $n->description }}</small>
+                                        </td>
                                         <td>{{ $n->parent }}</td>
                                         <td>{{ $n->order }}</td>
                                         <td>{{ $n->cat_type }}</td>
                                         <td>{{ $n->is_active }}</td>
                                         <td>
-                                            <li class="dropdown">
-                                                <a href="#" class="fa fa-gears" data-toggle="dropdown" ></a>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success">Action</button>
+                                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <span class="caret"></span>
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
                                                 <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="categories/{{ $n->id }}/edit" class="btn btn-default"><i class="fa fa-edit"></i> Edit</a>
+                                                    <li><a href="categories/{{ $n->id }}/edit" class="btn btn-success">Edit</a>
                                                     </li>
                                                     <li>
                                                         <form action="{{ route('categories.destroy', $n->id) }}" method="POST">
                                                             <input name="_method" type="hidden" value="DELETE">
                                                             {{ csrf_field() }}
-                                                            <input type="submit" class="btn btn-default" value="Activar"></input>
+                                                            <input type="submit" class="btn btn-success" value="Activar"></input>
                                                         </form>
                                                     </li>
                                                 </ul>
-                                            </li>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
