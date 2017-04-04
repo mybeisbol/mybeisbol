@@ -91,6 +91,7 @@
                                         <option value="{{ $categories->cat_type }}" style="background-color: #1ABB9C">{{ $categories->cat_type }}</option>
                                         <option value="Menu Rojo">Menu Rojo</option>
                                         <option value="Menu Blanco">Menu Blanco</option>
+                                        <option value="Menu Negro">Menu Negro</option>
                                     </select>
                                     @if($errors->has('type'))
                                         <span style="color: red;">{{ $errors->first('type') }}</span>

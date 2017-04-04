@@ -93,6 +93,7 @@
                                     <option></option>
                                     <option value="Menu Rojo">Menu Rojo</option>
                                     <option value="Menu Blanco">Menu Blanco</option>
+                                    <option value="Menu Negro">Menu Negro</option>
                                 </select>
                                 @if($errors->has('type'))
                                     <span style="color: red;">{{ $errors->first('type') }}</span>
