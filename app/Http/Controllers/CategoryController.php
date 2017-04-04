@@ -20,7 +20,7 @@ class CategoryController extends Controller
     {
         $categories = category::all();
         Privilege::getPrivileges();
-        return view('admin/category/show_category')->with(['categories' => $categories]);
+        return view('admin/category/index')->with(['categories' => $categories]);
     }
 
     /**
@@ -32,7 +32,7 @@ class CategoryController extends Controller
     {
         $categories = category::all();
         Privilege::getPrivileges();
-        return view('admin/category/add_category')->with(['categories' => $categories]);
+        return view('admin/category/add')->with(['categories' => $categories]);
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoryController extends Controller
         if($categoria->save()){
             $categories = category::all();
             Privilege::getPrivileges();
-            return view('admin/category/show_category')->with(['saved'=>true, 'categories' => $categories]);
+            return view('admin/category/index')->with(['saved'=>true, 'categories' => $categories]);
         }
 
     }
@@ -93,7 +93,7 @@ class CategoryController extends Controller
         $categories = category::find($id);
        // dd($categories->name);
         Privilege::getPrivileges();
-        return view('admin/category/edit_category')->with(['edit' => true, 'categories' => $categories]);
+        return view('admin/category/edit')->with(['edit' => true, 'categories' => $categories]);
     }
 
     /**
