@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class category extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,6 +12,6 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'parent', 'order', 'description', 'update_by', 'is_active', 'cat_type',
+        'name', 'parent', 'description', 'update_by', 'is_active', 'id_cat_types',
     ];
 }
