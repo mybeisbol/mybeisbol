@@ -17,9 +17,8 @@
             <div class="row">
                  <div class="col-md-12 col-sm-12 col-xs-12">
                       <div class="x_panel">
-                          <div class="x_title" style="background-color: #1ABB9C">
-                    <h2>Adicionar Categoria
-                        </br><small>Introduzca los datos deseados de la categoria</small></h2>
+                          <div class="x_title" >
+                    <h2>Adicionar Categoria</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -91,9 +90,9 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="select2_single form-control" tabindex="-1" name="type" required="required">
                                     <option></option>
-                                    <option value="Menu Rojo">Menu Rojo</option>
-                                    <option value="Menu Blanco">Menu Blanco</option>
-                                    <option value="Menu Negro">Menu Negro</option>
+                                    <option value="1">Menu Rojo</option>
+                                    <option value="2">Menu Blanco</option>
+                                    <option value="3">Live Score</option>
                                 </select>
                                 @if($errors->has('type'))
                                     <span style="color: red;">{{ $errors->first('type') }}</span>

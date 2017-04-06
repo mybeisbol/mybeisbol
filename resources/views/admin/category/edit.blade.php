@@ -17,9 +17,8 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
-                        <div class="x_title" style="background-color: #1ABB9C">
-                            <h2>Editar Categoria
-                                </br><small>Modifique los datos deseados de la categoria</small></h2>
+                        <div class="x_title" >
+                            <h2>Editar Categoria</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -66,18 +65,17 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="order">Orden <span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select class="select2_single form-control" tabindex="-1" name="order" required="required">
-                                        <option value="{{ $categories->order }}" style="background-color: #1ABB9C">{{ $categories->order }}</option>
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
+                                        <option value="0" @if ($categories->cat_type == 0) selected @endif>0</option>
+                                        <option value="1" @if ($categories->cat_type == 1) selected @endif>1</option>
+                                        <option value="2" @if ($categories->cat_type == 2) selected @endif>2</option>
+                                        <option value="3" @if ($categories->cat_type == 3) selected @endif>3</option>
+                                        <option value="4" @if ($categories->cat_type == 4) selected @endif>4</option>
+                                        <option value="5" @if ($categories->cat_type == 5) selected @endif>5</option>
+                                        <option value="6" @if ($categories->cat_type == 6) selected @endif>6</option>
+                                        <option value="7" @if ($categories->cat_type == 7) selected @endif>7</option>
+                                        <option value="8" @if ($categories->cat_type == 8) selected @endif>8</option>
+                                        <option value="9" @if ($categories->cat_type == 9) selected @endif>9</option>
+                                        <option value="10" @if ($categories->cat_type == 10) selected @endif>10</option>
                                     </select>
                                     @if($errors->has('order'))
                                         <span style="color: red;">{{ $errors->first('order') }}</span>
@@ -88,10 +86,9 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">Tipo <span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select class="select2_single form-control" tabindex="-1" name="type" required="required">
-                                        <option value="{{ $categories->cat_type }}" style="background-color: #1ABB9C">{{ $categories->cat_type }}</option>
-                                        <option value="Menu Rojo">Menu Rojo</option>
-                                        <option value="Menu Blanco">Menu Blanco</option>
-                                        <option value="Menu Negro">Menu Negro</option>
+                                        <option value="1" @if ($categories->cat_type == 1) selected @endif>Menu Rojo</option>
+                                        <option value="2" @if ($categories->cat_type == 2) selected @endif>Menu Blanco</option>
+                                        <option value="3" @if ($categories->cat_type == 3) selected @endif>Menu Negro</option>
                                     </select>
                                     @if($errors->has('type'))
                                         <span style="color: red;">{{ $errors->first('type') }}</span>

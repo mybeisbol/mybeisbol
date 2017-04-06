@@ -17,9 +17,8 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
-                        <div class="x_title" style="background-color: #1ABB9C">
-                            <h2>Lista de Categorias
-                                </br><small>Muestra las categorias existentes</small></h2>
+                        <div class="x_title">
+                            <h2>Lista de Categorias</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -52,13 +51,13 @@
                                         <td align="center">{{ $n->parent }}</td>
                                         <td align="center">{{ $n->order }}</td>
                                         <td align="center">
-                                         @if($n->cat_type=="Menu Rojo")
-                                                <label class="btn-warning btn-xs">{{ $n->cat_type }}</label>
-                                             @elseif($n->cat_type=="Menu Blanco")
-                                                <label class="btn-default btn-xs">{{ $n->cat_type }}</label>
-                                             @else
-                                                <label class="btn-dark btn-xs">{{ $n->cat_type }}</label>
-                                             @endif
+                                         @if($n->cat_type == 1)
+                                                <label class="btn-danger btn-xs">Menu Rojo</label>
+                                         @elseif($n->cat_type == 2)
+                                                <label class="btn-default btn-xs">Menu Blanco</label>
+                                        @elseif($n->cat_type == 3)
+                                                <label class="btn-dark btn-xs">Live Score</label>
+                                         @endif
                                         </td>
                                         <td align="center">
                                             @if($n->is_active)
