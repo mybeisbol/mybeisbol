@@ -19,7 +19,8 @@
                         <!-- menu profile quick info -->
                         <div class="profile clearfix">
                             <div class="profile_pic">
-                                <img src="{{ URL::asset('images/img.jpg') }}" alt="..." class="img-circle profile_img">
+                                <?php $image_path = empty(\Illuminate\Support\Facades\Auth::user()->image_path) ? 'images/user.png' : \Illuminate\Support\Facades\Auth::user()->image_path; ?>
+                                   <img src="{{ URL::asset($image_path) }}" alt="..." class="img-circle profile_img">
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
@@ -55,5 +56,6 @@
         </div>
 
         @include('admin.includes.footer_asset')
+        @yield('add_js')
      </body>
 </html>

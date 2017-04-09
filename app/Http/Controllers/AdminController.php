@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Privilege;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
+
         Privilege::getPrivileges();
         $data = array();
         $data['admins'] = User::GetUserWithRoles();
@@ -28,7 +30,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        Privilege::getPrivileges();
+        return view('admin/admin/add');
     }
 
     /**

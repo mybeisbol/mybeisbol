@@ -26,13 +26,13 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
                                 <ul class="dropdown-menu list-unstyled" role="menu">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i> Adicionar</a></li>
+                                    <li><a href="{{ url('/admins/create') }}"><i class="fa fa-plus-square"></i> Adicionar</a></li>
                                     <li><a href="#"><i class="fa fa-edit"></i> Editar</a></li>
                                     <li><a href="#"><i class="fa fa-check-square"></i> Activar</a></li>
                                     <li><a href="#"><i class="fa fa-square-o"></i> Desactivar</a></li>
                                 </ul>
                             </li>
-                            <li><a class=""><i class="fa fa-plus"></i></a>
+                            <li><a href="{{ url('/admins/create') }}" class=""><i class="fa fa-plus"></i></a>
                             </li>
                         </ul>
 
