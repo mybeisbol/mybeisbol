@@ -11,6 +11,12 @@
     {{ Auth::user()->first_name." ".Auth::user()->last_name }}
 @endsection
 
+@section('add_css')
+    <link href="{{ asset('/css/pnotify/pnotify.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/pnotify/pnotify.buttons.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/pnotify/pnotify.nonblock.css') }}" rel="stylesheet">
+@endsection
+
 @section('page-content')
 
     <div class="right_col" role="main">
@@ -105,6 +111,13 @@
                                 </tbody>
                             @endif
                         </table>
+                        <button onclick="new PNotify({
+                                  title: 'Regular Success',
+                                  text: 'That thing that you were trying to do worked!',
+                                  type: 'success',
+                                  styling: 'bootstrap3'
+                              })
+                        ">Success</button>
                     </div>
                 </div>
             </div>
@@ -113,3 +126,10 @@
     </div>
 @endsection
 
+
+@section('add_js')
+    <!-- pnotifiy -->
+    <script src="{{ asset('js/pnotify/pnotify.js') }}"></script>
+    <script src="{{ asset('js/pnotify/pnotify.buttons.js') }}"></script>
+    <script src="{{ asset('js/pnotify/pnotify.nonblock.js') }}"></script>
+@endsection

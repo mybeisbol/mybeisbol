@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         @include('admin.includes.header_asset')
+        @yield('add_css')
     </head>
 
     <body class="nav-md">

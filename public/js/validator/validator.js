@@ -16,10 +16,10 @@ var validator = (function($){
     */
     message = {
         invalid         : 'Campo invalido',
-        checked         : 'Tiene que Seleccionar',
-        empty           : 'No puede ser Vacio',
-        min             : 'Tiene que ser Mayor',
-        max             : 'Tiene que ser Menor',
+        checked         : 'must be checked',
+        empty           : 'No puede ser vacio',
+        min             : 'Tiene que ser mayor',
+        max             : 'Tiene que ser enor',
         number_min      : 'Muy Bajo',
         number_max      : 'Muy Alto',
         url             : 'URL Invalida',
