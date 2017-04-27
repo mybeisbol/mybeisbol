@@ -22,3 +22,6 @@ Route::get('/dashboard/{id?}', 'DashboardController@index');
 ///Resources
 Route::resource('/categories', 'CategoryController');
 Route::resource('/admins', 'AdminController');
+
+
+Route::get('/javascript/', 'AdminController@javascript');

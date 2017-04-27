@@ -9,9 +9,21 @@ use App\User_Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use JavaScript;
+
 
 class AdminController extends Controller
 {
+
+    public function javascript(){
+
+        JavaScript::put([
+            'testname' => 'bonstutorial'
+        ]);
+
+        return view('test');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +31,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-
         Privilege::getPrivileges();
         $data = array();
         $data['admins'] = User::GetUserWithRoles();
@@ -73,6 +84,12 @@ class AdminController extends Controller
             ]);
 
         $data['admins'] = User::GetUserWithRoles();
+
+        JavaScript::put([
+            'full-name'      => $toInsert['first_name']." ". $toInsert['last_name'],
+            'alert-type'    => 'success'
+        ]);
+
         return view('admin/admin/index', $data);
 
     }
