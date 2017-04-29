@@ -34,7 +34,6 @@ class AdminController extends Controller
         Privilege::getPrivileges();
         $data = array();
         $data['admins'] = User::GetUserWithRoles();
-        $data['msg'] = "Error";
 
         return view('admin/admin/index', $data);
     }
