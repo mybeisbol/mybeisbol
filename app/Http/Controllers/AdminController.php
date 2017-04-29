@@ -131,7 +131,15 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usr = array();
+        foreach ($request->request as $key => $value){
+             $usr[$key] = $value;
+        }
+
+        $updated = User::UpdateById($id,$usr);
+        if(empty($updated))
+            return $this->returnAjaxError();
+        return $this->returnAjaxSuccess();
     }
 
     /**
@@ -140,12 +148,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id,Request $request)
+    public function destroy($id)
     {
-        $updated = User::UpdateById($id,["is_active" => $request->active == 'true' ? 1 : 0]);
-        if(empty($updated))
-            return $this->returnAjaxError();
-        return $this->returnAjaxSuccess();
+        //
 
     }
 

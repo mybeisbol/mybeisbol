@@ -20,11 +20,11 @@ $( document ).ready(function () {
 function toggleActive() {
     var url = "admins/";
     var id = $(this).data("id");
-    var active = $(this).is(":checked");
+    var active = $(this).is(":checked") ? 1 : 0;
     $.ajax({
         url: url+id,
-        data: {"active":active},
-        type: 'delete',
+        data: {"is_active":active},
+        type: 'put',
         success: function(result)
         {
             if(!result.error){
