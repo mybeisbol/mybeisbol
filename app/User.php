@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name', 'email', 'password',
+        'first_name','last_name', 'email', 'password','image_path','age','gender','updated_by','is_active'
     ];
 
     /**
@@ -31,8 +31,8 @@ class User extends Authenticatable
 
     static function GetUserWithRoles(){
         $users =  DB::table('users')
-                    ->leftJoin('user_roles','user_roles.id_user','=','users.id')
-                    ->leftJoin('roles','roles.id','=','user_roles.id_role')
+                    ->leftJoin('user__roles','user__roles.id_user','=','users.id')
+                    ->leftJoin('roles','roles.id','=','user__roles.id_role')
                     ->select('users.id','users.first_name','users.last_name','users.email',
                         'users.created_at','users.updated_at','users.updated_by','users.is_active',
                         'roles.name as rol','roles.id as id_rol')
@@ -48,5 +48,19 @@ class User extends Authenticatable
 
         }
        return $usersWithRoles;
+    }
+
+    static function updated_by($id = null){
+        $id = $id ? $id : Auth::user()->id;
+        $user = User::find($id);
+        return $user->first_name." ".$user->last_name;
+    }
+
+    static function UpdateById($id,$array){
+        if(empty($id) || empty($array)) return false;
+        $row = DB::table('users')
+           ->where('id',$id)
+           ->update($array);
+        return $row;
     }
 }

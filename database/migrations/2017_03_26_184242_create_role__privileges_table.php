@@ -13,7 +13,7 @@ class CreateRolePrivilegesTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_privileges', function (Blueprint $table) {
+        Schema::create('role__privileges', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_role')->unsigned();
             $table->foreign('id_role')->references('id')->on('roles');
@@ -30,6 +30,6 @@ class CreateRolePrivilegesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_privileges');
+        Schema::dropIfExists('role__privileges');
     }
 }

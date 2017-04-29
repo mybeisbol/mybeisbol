@@ -23,10 +23,10 @@ class Privilege extends Model
     static $list;
 
     static function getPrivileges(){
-       Privilege::$list = DB::table('user_roles')
-            ->join('role_privileges','user_roles.id_role','=','role_privileges.id_role')
-            ->where('user_roles.id_user',Auth::user()->id)
-            ->select('role_privileges.id_privilege')
+       Privilege::$list = DB::table('user__roles')
+            ->join('role__privileges','user__roles.id_role','=','role__privileges.id_role')
+            ->where('user__roles.id_user',Auth::user()->id)
+            ->select('role__privileges.id_privilege')
             ->get();
     }
 }

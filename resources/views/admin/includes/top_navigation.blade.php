@@ -8,7 +8,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ URL::asset('images/img.jpg') }}    " alt="">@yield('full-name')
+                        <?php $image_path = empty(\Illuminate\Support\Facades\Auth::user()->image_path) ? 'images/user.png' : \Illuminate\Support\Facades\Auth::user()->image_path;?>
+                        <img src="{{ URL::asset($image_path) }}    " alt="">@yield('full-name')
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">

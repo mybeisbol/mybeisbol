@@ -10,4 +10,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    function returnAjaxSuccess($text = ""){
+        $result = array(
+            'error'=> 0,
+            'response' => $text
+        );
+        return json_encode($result);
+    }
+
+    function returnAjaxError($text = ""){
+        $result = array(
+            'error'=> 1,
+            'response' => $text
+        );
+        return json_encode($result);
+    }
 }
