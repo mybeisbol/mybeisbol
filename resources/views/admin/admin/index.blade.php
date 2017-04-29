@@ -12,9 +12,13 @@
 @endsection
 
 @section('add_css')
+    <!-- Pnotify -->
     <link href="{{ asset('/css/pnotify/pnotify.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/pnotify/pnotify.buttons.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/pnotify/pnotify.nonblock.css') }}" rel="stylesheet">
+
+    <!-- Switchery -->
+    <link href="{{ asset('/css/switchery.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-content')
@@ -33,9 +37,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
                                 <ul class="dropdown-menu list-unstyled" role="menu">
                                     <li><a href="{{ url('/admins/create') }}"><i class="fa fa-plus-square"></i> Adicionar</a></li>
-                                    <li><a href="#"><i class="fa fa-edit"></i> Editar</a></li>
-                                    <li><a href="#"><i class="fa fa-check-square"></i> Activar</a></li>
-                                    <li><a href="#"><i class="fa fa-square-o"></i> Desactivar</a></li>
+
                                 </ul>
                             </li>
                             <li><a href="{{ url('/admins/create') }}" class=""><i class="fa fa-plus"></i></a>
@@ -48,20 +50,20 @@
                         <table id="datatable" class="table table-striped table-bordered">
                             @if(isset($admins))
                                 <thead>
-                                    <th></th>
                                     <th>Nombre</th>
                                     <th>Correo Electronico</th>
                                     <th>Roles</th>
                                     <th>Ultima Actualizacion</th>
                                     <th>Actualizado por</th>
                                     <th>Activo</th>
+                                    <th>Accion</th>
                                 </thead>
 
 
                                 <tbody>
-                                @foreach($admins as $admin)
+                                @foreach($admins as $id => $admin)
                                     <tr>
-                                        <th><input type="checkbox" id="adminCheckBox_{{ $admin->id }}" class="flat"></th>
+
                                         <td>{{ $admin->first_name." ".$admin->last_name }}
                                             <br />
                                             <small class="light-gray">Created {{ formatDate($admin->created_at) }}</small>
@@ -100,30 +102,28 @@
                                         <td>{{ formatDate($admin->updated_at) }}</td>
                                         <td>{{ $admin->updated_by }}</td>
                                         <td align="center">
-                                            @if($admin->is_active)
-                                                <span class="fa fa-check green"></span>
-                                            @else
-                                                <span class="fa fa-remove red"></span>
-                                            @endif
-                                            </td>
+                                            <div class="">
+                                                <label>
+                                                    <input type="checkbox" data-id="{{ $id }}" class="js-switch" @if($admin->is_active) checked @endif />
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <a href="{{ url('/admins/'.$admin->id.'/edit') }}" style="cursor: pointer"><i class="glyphicon glyphicon-edit"  style="font-size: large"></i></a>
+
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             @endif
                         </table>
-                        <button onclick="new PNotify({
-                                  title: 'Regular Success',
-                                  text: 'That thing that you were trying to do worked!',
-                                  type: 'success',
-                                  styling: 'bootstrap3'
-                              })
-                        ">Success</button>
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 
@@ -132,4 +132,13 @@
     <script src="{{ asset('js/pnotify/pnotify.js') }}"></script>
     <script src="{{ asset('js/pnotify/pnotify.buttons.js') }}"></script>
     <script src="{{ asset('js/pnotify/pnotify.nonblock.js') }}"></script>
+
+    <!-- Switchery -->
+    <script src="{{ asset('js/switchery.min.js') }}"></script>
+
+    <!-- custom -->
+    <script src="{{ asset('js/custom/admin.js') }}"></script>
+
+    <!-- ajax -->
+    <script src="{{ asset('js/ajax.lib.js') }}"></script>
 @endsection

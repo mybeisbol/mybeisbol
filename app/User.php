@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name', 'email', 'password','image_path','age','gender','updated_by'
+        'first_name','last_name', 'email', 'password','image_path','age','gender','updated_by','is_active'
     ];
 
     /**
@@ -54,5 +54,13 @@ class User extends Authenticatable
         $id = $id ? $id : Auth::user()->id;
         $user = User::find($id);
         return $user->first_name." ".$user->last_name;
+    }
+
+    static function UpdateById($id,$array){
+        if(empty($id) || empty($array)) return false;
+        $row = DB::table('users')
+           ->where('id',$id)
+           ->update($array);
+        return $row;
     }
 }

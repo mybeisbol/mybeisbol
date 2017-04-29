@@ -11,8 +11,6 @@
     {{ Auth::user()->first_name." ".Auth::user()->last_name }}
 @endsection
 
-@section('user-action',$action);
-
 @section('page-content')
     <div class="right_col" role="main">
         <div class="">
@@ -21,10 +19,11 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>@yield('user-action') Administradores </h2>
+                            <h2>{{ $action }} Administradores </h2>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="x_content">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_content">
                             <form class="form-horizontal form-label-left" action="{{  url('/admins') }}" method="<?= isset($user->id) || !empty($user->id) ? "put" : "post" ?>">
                                 {{ csrf_field() }}
                                 <div class="item form-group">
@@ -105,6 +104,8 @@
                                 </div>
                             </form>
                         </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

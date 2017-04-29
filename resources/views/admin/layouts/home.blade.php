@@ -58,5 +58,6 @@
 
         @include('admin.includes.footer_asset')
         @yield('add_js')
+        @include('footervarview')
      </body>
 </html>

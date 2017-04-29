@@ -35,6 +35,7 @@ class AdminController extends Controller
         $data = array();
         $data['admins'] = User::GetUserWithRoles();
         $data['msg'] = "Error";
+
         return view('admin/admin/index', $data);
     }
 
@@ -86,8 +87,8 @@ class AdminController extends Controller
         $data['admins'] = User::GetUserWithRoles();
 
         JavaScript::put([
-            'full-name'      => $toInsert['first_name']." ". $toInsert['last_name'],
-            'alert-type'    => 'success'
+            'full_name'     => $toInsert['first_name']." ". $toInsert['last_name'],
+            'type'          => 'added'
         ]);
 
         return view('admin/admin/index', $data);
@@ -139,9 +140,13 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
-        //
+        $updated = User::UpdateById($id,["is_active" => $request->active == 'true' ? 1 : 0]);
+        if(empty($updated))
+            return $this->returnAjaxError();
+        return $this->returnAjaxSuccess();
+
     }
 
 
